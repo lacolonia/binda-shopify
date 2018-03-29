@@ -1,7 +1,27 @@
+require 'binda'
 require "binda/shopify/engine"
 
 module Binda
   module Shopify
-    # Your code goes here...
+    CONNECTION_KEYS = %i(api_key password shared_secret shop_name)
+    STRUCTURES = {
+      product: {
+        'shopify-details' => {
+          'handle' => 'handle',
+          'edit-product-url' => 'edit_url'
+        }
+      },
+      collection: {
+        'shopify-details' => {
+          'edit-collection-url' => 'edit_url',
+          'handle' => 'handle'
+        }
+      },
+      product_type: {
+        'shopify-details' => {
+          'handle' => 'name'
+        }
+      }
+    }
   end
 end
