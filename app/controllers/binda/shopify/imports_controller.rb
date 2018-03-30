@@ -2,7 +2,7 @@ require_dependency "binda/application_controller"
 
 module Binda
   module Shopify
-    class ImportsController < Binda::ApplicationController
+    class ImportsController < ::Binda::ApplicationController
       def import
         importer = Binda::Shopify::Importer.new
         importer.run!
