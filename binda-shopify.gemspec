@@ -20,7 +20,9 @@ Gem::Specification.new do |s|
   s.add_dependency "binda", "~> 0.1"
   s.add_dependency 'shopify_api'
   s.add_dependency 'pg'
+  s.add_dependency 'deface'
   s.add_development_dependency 'rspec-rails'
   s.add_development_dependency 'byebug'
   s.add_development_dependency 'shopify-mock'
+  s.add_development_dependency 'database_cleaner'
 end

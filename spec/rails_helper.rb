@@ -7,7 +7,9 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'byebug'
 require 'shopify-mock'
+require 'database_cleaner'
 
+DatabaseCleaner.strategy = :transaction
 ShopifyAPI::Mock.enabled = true
 ShopifyAPI::Mock.allow_internet = false
 
@@ -60,4 +62,11 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+  
+  config.after(:all) do
+    DatabaseCleaner.clean_with :truncation
+  end
 end
