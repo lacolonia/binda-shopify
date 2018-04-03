@@ -22,6 +22,7 @@ module Binda
           send("fetch_#{name.to_s.pluralize}").each do |item|
             component = Binda::Component.find_or_initialize_by slug: item.id, structure: structure
             component.name = item.title
+            component.publish_state = 'published'
             component.save
             structure_fields.each do |field_group_slug, fields|
               field_group_slug = "#{structure_slug}-#{field_group_slug}"

@@ -33,6 +33,14 @@ describe "Binda::Shopify::Importer" do
     expect(Binda::Component.where(slug: product_fixtures[:products].first[:id]).count).to eq 1
   end
 
+  it "sets publish_state to published for imported products" do
+    importer.run!
+    product_fixtures[:products].each do |product|
+      expect(Binda::Component.find_by slug: product[:id], publish_state: 'published').to_not eq nil
+      expect(Binda::Component.find_by slug: product[:id], publish_state: 'draft').to eq nil
+    end
+  end
+
   it "imports collections" do
     importer.run!
 
