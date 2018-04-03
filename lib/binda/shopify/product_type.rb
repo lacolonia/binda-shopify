@@ -1,3 +1,5 @@
+require 'digest'
+
 module Binda
   module Shopify
     class ProductType
@@ -11,7 +13,7 @@ module Binda
       end
 
       def id
-        SecureRandom.hex(6)
+        Digest::MD5.hexdigest self.title
       end
     end
   end

@@ -16,6 +16,7 @@ module Binda
       end
 
       def run!
+        start_time = Time.now
         Binda::Shopify::STRUCTURES.each do |name, structure_fields|
           structure_slug = settings.get_string("#{@settings.slug}-#{name.to_s.gsub('_', '-')}").strip.parameterize
           structure = Binda::Structure.find_by slug: structure_slug
@@ -23,6 +24,7 @@ module Binda
             component = Binda::Component.find_or_initialize_by slug: item.id, structure: structure
             component.name = item.title
             component.publish_state = 'published'
+            component.updated_at = Time.now
             component.save
             structure_fields.each do |field_group_slug, fields|
               field_group_slug = "#{structure_slug}-#{field_group_slug}"
@@ -35,6 +37,7 @@ module Binda
               end
             end
           end
+          structure.components.where("updated_at < ?", start_time).update_all publish_state: 'draft'
         end
 
         Binda::Shopify::STRUCTURES.keys

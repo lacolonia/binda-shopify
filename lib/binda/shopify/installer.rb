@@ -37,6 +37,8 @@ module Binda
           end
           field_group.save
         end
+
+        structure
       end
 
     end
