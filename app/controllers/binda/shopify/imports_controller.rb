@@ -4,7 +4,7 @@ module Binda
   module Shopify
     class ImportsController < ::Binda::ApplicationController
       def import
-        importer = Binda::Shopify::Importer.new
+        importer = ::Binda::Shopify::Importer.new
         importer.run!
 
         structure_name = STRUCTURES.keys.first
