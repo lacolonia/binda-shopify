@@ -1,5 +1,6 @@
 require 'binda'
 require "binda/shopify/engine"
+require 'deface'
 
 module Binda
   module Shopify
