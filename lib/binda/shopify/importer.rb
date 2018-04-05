@@ -7,8 +7,8 @@ module Binda
 
       def initialize
         settings_slug = 'shopify-settings'
-        @settings = Binda::Structure.find_by(slug: 'shopify-settings').board
-        api_key, password, shared_secret, shop_name = Binda::Shopify::CONNECTION_KEYS.map{|field| settings.get_string("#{settings_slug}-#{field.to_s.gsub('_', '-')}").strip }
+        @settings = ::Binda::Structure.find_by(slug: 'shopify-settings').board
+        api_key, password, shared_secret, shop_name = ::Binda::Shopify::CONNECTION_KEYS.map{|field| settings.get_string("#{settings_slug}-#{field.to_s.gsub('_', '-')}").strip }
 
         @client = ::ShopifyAPI
         @client::Base.site = "https://#{api_key}:#{password}@#{shop_name}.myshopify.com/admin"
@@ -19,10 +19,10 @@ module Binda
         start_time = Time.now
         Binda::Shopify::STRUCTURES.each do |name, structure_fields|
           structure_slug = settings.get_string("#{@settings.slug}-#{name.to_s.gsub('_', '-')}").strip.parameterize
-          structure = Binda::Structure.find_by slug: structure_slug
+          structure = ::Binda::Structure.find_by slug: structure_slug
           send("fetch_#{name.to_s.pluralize}").each do |item|
             if item.id.present?
-              component = Binda::Component.find_or_initialize_by slug: item.id, structure: structure
+              component = ::Binda::Component.find_or_initialize_by slug: item.id, structure: structure
               component.name = item.title
               component.publish_state = 'published'
               component.updated_at = Time.now
