@@ -13,7 +13,7 @@ module Binda
       end
 
       def id
-        Digest::MD5.hexdigest self.title
+        Digest::MD5.hexdigest self.title if self.title.present?
       end
     end
   end

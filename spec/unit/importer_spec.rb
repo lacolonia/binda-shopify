@@ -5,10 +5,13 @@ describe "Binda::Shopify::Importer" do
     settings = { api_key: 'aaa', password: 'bbb', shared_secret: 'ccc', shop_name: 'ddd', product: 'Product', collection: 'Collection', product_type: 'Product Type' }
     installer = Binda::Shopify::Installer.new
     installer.create_settings_board(settings)
-    ShopifyAPI::Mock::Response.new :get, "products.json", File.read( File.join 'spec', 'assets', 'products.json' )
     @products_structure = structure = installer.create_item_structure :product, 'Product'
     @product_types_structure = installer.create_item_structure :product_type, 'Product Type'
     @collections_structure = installer.create_item_structure :collection, 'Collection'
+  end
+
+  before(:each) do
+    ShopifyAPI::Mock::Response.new :get, "products.json", File.read( File.join 'spec', 'assets', 'products.json' )
   end
 
   let(:importer){ Binda::Shopify::Importer.new }
@@ -80,5 +83,12 @@ describe "Binda::Shopify::Importer" do
     product_types.each do |product_type|
       expect(Binda::Component.where(name: product_type).count).to eq 1
     end
+  end
+
+  it "doesn't break when product type has no id" do
+    products = JSON.parse(ShopifyAPI::Mock::Fixture.find(:products, :json).data, symbolize_names: true)
+    products[:products].first[:product_type] = ''
+    ShopifyAPI::Mock::Response.new :get, "products.json", products.to_json
+    expect{ importer.run! }.to_not change{ @product_types_structure.components.count }
   end
 end

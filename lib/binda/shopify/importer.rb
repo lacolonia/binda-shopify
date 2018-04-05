@@ -21,18 +21,20 @@ module Binda
           structure_slug = settings.get_string("#{@settings.slug}-#{name.to_s.gsub('_', '-')}").strip.parameterize
           structure = Binda::Structure.find_by slug: structure_slug
           send("fetch_#{name.to_s.pluralize}").each do |item|
-            component = Binda::Component.find_or_initialize_by slug: item.id, structure: structure
-            component.name = item.title
-            component.publish_state = 'published'
-            component.updated_at = Time.now
-            component.save
-            structure_fields.each do |field_group_slug, fields|
-              field_group_slug = "#{structure_slug}-#{field_group_slug}"
-              field_group = structure.field_groups.find_by slug: field_group_slug
-              if field_group
-                fields.each do |field_slug, method|
-                  field_setting = field_group.field_settings.find_by(slug: "#{field_group_slug}-#{field_slug}")
-                  component.strings.find_by(field_setting_id: field_setting.id).update content: item.send(method) if field_setting
+            if item.id.present?
+              component = Binda::Component.find_or_initialize_by slug: item.id, structure: structure
+              component.name = item.title
+              component.publish_state = 'published'
+              component.updated_at = Time.now
+              component.save
+              structure_fields.each do |field_group_slug, fields|
+                field_group_slug = "#{structure_slug}-#{field_group_slug}"
+                field_group = structure.field_groups.find_by slug: field_group_slug
+                if field_group
+                  fields.each do |field_slug, method|
+                    field_setting = field_group.field_settings.find_by(slug: "#{field_group_slug}-#{field_slug}")
+                    component.strings.find_by(field_setting_id: field_setting.id).update content: item.send(method) if field_setting
+                  end
                 end
               end
             end
