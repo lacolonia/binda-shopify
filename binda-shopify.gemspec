@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Binda::Shopify::VERSION
   s.authors     = ["Marco Crepaldi"]
   s.email       = ["marco.crepaldi@gmail.com"]
-  s.homepage    = "lacolonia.studio"
+  s.homepage    = "http://lacolonia.studio"
   s.summary     = "Binda plugin that lets you import products from your Shopify store."
   s.description = ""
   s.license     = "MIT"
