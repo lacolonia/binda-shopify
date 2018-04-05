@@ -1,5 +1,10 @@
 require 'binda'
 require "binda/shopify/engine"
+require 'binda/shopify/importer'
+require 'binda/shopify/item'
+require 'binda/shopify/product'
+require 'binda/shopify/collection'
+require 'binda/shopify/product_type'
 require 'deface'
 
 module Binda
