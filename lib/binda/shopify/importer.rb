@@ -17,7 +17,7 @@ module Binda
 
       def run!
         start_time = Time.now
-        Binda::Shopify::STRUCTURES.each do |name, structure_fields|
+        ::Binda::Shopify::STRUCTURES.each do |name, structure_fields|
           structure_slug = settings.get_string("#{@settings.slug}-#{name.to_s.gsub('_', '-')}").strip.parameterize
           structure = ::Binda::Structure.find_by slug: structure_slug
           send("fetch_#{name.to_s.pluralize}").each do |item|
@@ -42,20 +42,20 @@ module Binda
           structure.components.where("updated_at < ?", start_time).update_all publish_state: 'draft'
         end
 
-        Binda::Shopify::STRUCTURES.keys
+        ::Binda::Shopify::STRUCTURES.keys
       end
 
       def fetch_collections
-        @client::CustomCollection.find(:all).map{|p| Binda::Shopify::Collection.new(p, shop)}
+        @client::CustomCollection.find(:all, params: { limit: 250 }).map{|p| ::Binda::Shopify::Collection.new(p, shop)}
       end
 
       def fetch_products
-        @client::Product.find(:all).map{|p| Binda::Shopify::Product.new(p, shop)}
+        @client::Product.find(:all, params: { limit: 250 }).map{|p| ::Binda::Shopify::Product.new(p, shop)}
       end
 
       def fetch_product_types
-        product_types = @client::Product.find(:all).map(&:product_type).uniq
-        product_types.map{|p| Binda::Shopify::ProductType.new(p, shop) }
+        product_types = @client::Product.find(:all, params: { limit: 250 }).map(&:product_type).uniq
+        product_types.map{|p| ::Binda::Shopify::ProductType.new(p, shop) }
       end
 
       def shop

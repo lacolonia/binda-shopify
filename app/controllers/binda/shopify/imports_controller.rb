@@ -8,9 +8,9 @@ module Binda
         importer.run!
 
         structure_name = STRUCTURES.keys.first
-        settings = Binda::Structure.find_by(slug: 'shopify-settings').board
+        settings = ::Binda::Structure.find_by(slug: 'shopify-settings').board
         structure_slug = settings.get_string("#{settings.slug}-#{structure_name.to_s.gsub('_', '-')}").strip.parameterize
-        structure = Binda::Structure.find_by slug: structure_slug
+        structure = ::Binda::Structure.find_by slug: structure_slug
         redirect_to binda.structure_components_path( structure ), notice: 'Import was succesful!'
       end
     end
