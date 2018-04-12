@@ -46,15 +46,32 @@ module Binda
       end
 
       def fetch_collections
-        @client::CustomCollection.find(:all, params: { limit: 250 }).map{|p| ::Binda::Shopify::Collection.new(p, shop)}
+        items = []
+        number_of_pages = (@client::CustomCollection.count / 250.0).ceil
+        number_of_pages.times do |i|
+          @client::CustomCollection.find(:all, params: { limit: 250, page: i+1}).each do |p|
+            items << ::Binda::Shopify::Collection.new(p, shop)
+          end
+        end
+
+        items
       end
 
       def fetch_products
-        @client::Product.find(:all, params: { limit: 250 }).map{|p| ::Binda::Shopify::Product.new(p, shop)}
+        items = []
+        number_of_pages = (@client::Product.count / 250.0).ceil
+        number_of_pages.times do |i|
+          @client::Product.find(:all, params: { limit: 250, page: i+1}).each do |p|
+            items << ::Binda::Shopify::Product.new(p, shop)
+          end
+        end
+
+        items
       end
 
       def fetch_product_types
-        product_types = @client::Product.find(:all, params: { limit: 250 }).map(&:product_type).uniq
+        products = fetch_products
+        product_types = products.map(&:product_type).uniq
         product_types.map{|p| ::Binda::Shopify::ProductType.new(p, shop) }
       end
 
