@@ -23,7 +23,7 @@ module Binda
           send("fetch_#{name.to_s.pluralize}").each do |item|
             if item.id.present?
               component = ::Binda::Component.find_or_initialize_by slug: item.id, structure: structure
-              component.name = item.title
+              component.name ||= item.title
               component.publish_state = 'published'
               component.updated_at = Time.now
               component.save

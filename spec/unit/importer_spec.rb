@@ -37,6 +37,16 @@ describe "Binda::Shopify::Importer" do
     expect(Binda::Component.where(slug: product_fixtures[:products].first[:id]).count).to eq 1
   end
 
+  it "doesn't overwrite product title" do
+    importer.run!
+    product = Binda::Component.find_by slug: product_fixtures[:products].first[:id]
+    product.name = 'My AWESOME product!'
+    product.save
+    importer.run!
+    product.reload
+    expect(product.name).to eq 'My AWESOME product!'
+  end
+
   it "sets publish_state to published for imported products" do
     importer.run!
     product_fixtures[:products].each do |product|
