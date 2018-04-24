@@ -33,7 +33,12 @@ module Binda
                 if field_group
                   fields.each do |field_slug, method|
                     field_setting = field_group.field_settings.find_by(slug: "#{field_group_slug}-#{field_slug}")
-                    component.strings.find_by(field_setting_id: field_setting.id).update content: item.send(method) if field_setting
+                    if method.is_a? Array
+                      # https://stackoverflow.com/a/12065854/1498118
+                      component.strings.find_by(field_setting_id: field_setting.id).update content: method.inject(item, :send) if field_setting
+                    else
+                      component.strings.find_by(field_setting_id: field_setting.id).update content: item.send(method) if field_setting
+                    end
                   end
                 end
               end
@@ -78,6 +83,7 @@ module Binda
       def shop
         @shop ||= @client::Shop.current
       end
+
     end
   end
 end
