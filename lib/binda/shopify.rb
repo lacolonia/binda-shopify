@@ -20,7 +20,8 @@ module Binda
       collection: {
         'shopify-details' => {
           'edit-collection-url' => 'edit_url',
-          'handle' => 'handle'
+          'handle' => 'handle',
+          'sorted-products:text' => 'sorted_products'
         }
       },
       product_type: {

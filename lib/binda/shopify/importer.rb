@@ -31,9 +31,15 @@ module Binda
                 field_group_slug = "#{structure_slug}-#{field_group_slug}"
                 field_group = structure.field_groups.find_by slug: field_group_slug
                 if field_group
-                  fields.each do |field_slug, method|
+                  fields.each do |field_slug_and_type, method|
+                    field_slug, type = field_slug_and_type.split(':')
+                    type ||= 'string'
+
                     field_setting = field_group.field_settings.find_by(slug: "#{field_group_slug}-#{field_slug}")
-                    component.strings.find_by(field_setting_id: field_setting.id).update content: item.send(method) if field_setting
+                    field_type_association = type.pluralize
+                    if Binda::Component.reflections.keys.include? field_type_association
+                      component.send(field_type_association).find_by(field_setting_id: field_setting.id).update content: item.send(method) if field_setting
+                    end
                   end
                 end
               end

@@ -32,8 +32,10 @@ module Binda
           if field_group.nil?
             field_group = structure.field_groups.create! name: field_group_slug.titleize, slug: "#{structure_slug}-#{field_group_slug}"
           end
-          fields.each do |name, mapping|
-            field_group.field_settings.create! name: name.titleize, field_type: 'string'
+          fields.each do |name_and_type, mapping|
+            name, type = name_and_type.split(':')
+            type ||= 'string'
+            field_group.field_settings.create! name: name.titleize, field_type: type, read_only: true
           end
           field_group.save
         end
