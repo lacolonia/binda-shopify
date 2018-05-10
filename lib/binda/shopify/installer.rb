@@ -35,7 +35,8 @@ module Binda
           fields.each do |name_and_type, mapping|
             name, type = name_and_type.split(':')
             type ||= 'string'
-            field_group.field_settings.create! name: name.titleize, field_type: type, read_only: true
+            humanized_name = name.humanize(keep_id_suffix: true).gsub('-', ' ')
+            field_group.field_settings.create! name: humanized_name, field_type: type, read_only: true
           end
           field_group.save
         end
