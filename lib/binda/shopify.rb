@@ -14,7 +14,8 @@ module Binda
       product: {
         'shopify-details' => {
           'handle' => 'handle',
-          'edit-product-url' => 'edit_url'
+          'edit-product-url' => 'edit_url',
+          'inventory-item-id' => ['variants', 'first', 'inventory_item_id']
         }
       },
       collection: {
