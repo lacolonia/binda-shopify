@@ -37,7 +37,7 @@ module Binda
 
                     field_setting = field_group.field_settings.find_by(slug: "#{field_group_slug}-#{field_slug}")
                     field_type_association = type.pluralize
-                    if Binda::Component.reflections.keys.include? field_type_association
+                    if ::Binda::Component.reflections.keys.include? field_type_association
                       component.send(field_type_association).find_by(field_setting_id: field_setting.id).update content: item.send(method) if field_setting
                     end
                   end
