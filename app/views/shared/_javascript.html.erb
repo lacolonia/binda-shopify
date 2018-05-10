@@ -1,0 +1,36 @@
+<script>
+$(function(){
+  $( window ).on('beforeunload', function(){
+    if($('.popup-warning').css('opacity') == '1'){
+      return 'Please, wait until popup is closed.';
+    }
+  });
+
+  $('.main-sidebar--nav').on("click", ".synch-with-shopify", function(){
+    var $this = $(this);
+    var $popup = $(".popup-warning");
+    var $loader = $(".popup-warning--loader");
+    var $message = $(".popup-warning--message");
+    var $success = $(".popup-warning--success");
+    var synch_url = $this.attr('href');
+    
+    if($loader.hasClass('popup-warning--loader--hidden')){
+      $loader.removeClass('popup-warning--loader--hidden');
+    }
+    if(!$success.hasClass('popup-warning--loader--hidden')){
+      $success.addClass('popup-warning--success--hidden');
+    }
+    $message.text($this.data("message"));
+    $popup.removeClass("popup-warning--hidden");
+    $.get(synch_url, function(data){
+      $message.text($this.data("success"));
+      $loader.addClass('popup-warning--loader--hidden');
+      $(".popup-warning--success").removeClass('popup-warning--success--hidden');
+      window.setTimeout(function(){
+        $(".popup-warning").addClass("popup-warning--hidden");
+      }, 2000);
+    })
+    return false;
+  });
+});
+</script>

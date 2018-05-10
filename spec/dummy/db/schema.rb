@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180327222206) do
+ActiveRecord::Schema.define(version: 20180412163228) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(version: 20180327222206) do
     t.integer "default_choice_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "read_only", default: false
     t.index ["ancestry"], name: "index_binda_field_settings_on_ancestry"
     t.index ["default_choice_id"], name: "index_binda_field_settings_on_default_choice_id"
     t.index ["field_group_id"], name: "index_binda_field_settings_on_field_group_id"

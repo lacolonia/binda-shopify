@@ -1,0 +1,6 @@
+en:
+  binda:
+    shopify:
+      synch_with_shopify: Synch with Shopify
+      loading: Synch in progress. It might take a few minutes.
+      success: Synch completed succesfully!

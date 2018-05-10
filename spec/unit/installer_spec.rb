@@ -61,6 +61,7 @@ describe "Binda::Shopify::Installer" do
           field_setting = field_group.field_settings.find_by slug: slug
           expect(field_setting).not_to be_nil
           expect(field_setting.field_type).to eq 'string'
+          expect(field_setting.read_only?).to be true
         end
       end
     end
@@ -87,11 +88,14 @@ describe "Binda::Shopify::Installer" do
       Binda::Shopify::STRUCTURES[:collection].each do |field_group_slug, fields|
         field_group = structure.field_groups.find_by slug: "shopify-collection-#{field_group_slug}"
         expect(field_group).not_to be nil
-        fields.each do |field_slug, mapping|
+        fields.each do |field_slug_and_type, mapping|
+          field_slug, type = field_slug_and_type.split(':')
+
           slug = "shopify-collection-#{field_group_slug}-#{field_slug}"
           field_setting = field_group.field_settings.find_by slug: slug
           expect(field_setting).not_to be_nil
-          expect(field_setting.field_type).to eq 'string'
+          expect(field_setting.field_type).to eq type || 'string'
+          expect(field_setting.read_only?).to be true
         end
       end
     end
@@ -123,6 +127,7 @@ describe "Binda::Shopify::Installer" do
           field_setting = field_group.field_settings.find_by slug: slug
           expect(field_setting).not_to be_nil
           expect(field_setting.field_type).to eq 'string'
+          expect(field_setting.read_only).to be true
         end
       end
     end
