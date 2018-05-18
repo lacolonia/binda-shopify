@@ -34,15 +34,11 @@ module Binda
                   fields.each do |field_slug_and_type, method|
                     field_slug, type = field_slug_and_type.split(':')
                     type ||= 'string'
+
                     field_setting = field_group.field_settings.find_by(slug: "#{field_group_slug}-#{field_slug}")
                     field_type_association = type.pluralize
                     if ::Binda::Component.reflections.keys.include? field_type_association
-                      if method.is_a? Array
-                        # https://stackoverflow.com/a/12065854/1498118
-                        component.send(field_type_association).find_by(field_setting_id: field_setting.id).update content: method.inject(item, :send) if field_setting
-                      else
-                        component.send(field_type_association).find_by(field_setting_id: field_setting.id).update content: item.send(method) if field_setting
-                      end
+                      component.send(field_type_association).find_by(field_setting_id: field_setting.id).update content: item.send(method) if field_setting
                     end
                   end
                 end
@@ -88,7 +84,6 @@ module Binda
       def shop
         @shop ||= @client::Shop.current
       end
-
     end
   end
 end
