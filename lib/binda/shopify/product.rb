@@ -11,6 +11,15 @@ module Binda
         product.id
       end
 
+      def inventory_item_id
+        variant = variants.first
+        if variant.respond_to? :inventory_item_id
+          variant.inventory_item_id if !variant.nil?
+        else
+          nil
+        end
+      end
+
       def edit_url
         "https://#{shop.domain}/admin/products/#{product.id}"
       end

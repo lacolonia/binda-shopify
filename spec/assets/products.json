@@ -39,7 +39,8 @@
           "option1": "Pink",
           "fulfillment_service": "manual",
           "option2": null,
-          "option3": null
+          "option3": null,
+          "inventory_item_id": 1234567890
         },
         {
           "position": 2,
@@ -59,7 +60,8 @@
           "option1": "Red",
           "fulfillment_service": "manual",
           "option2": null,
-          "option3": null
+          "option3": null,
+          "inventory_item_id": 1234567890
         },
         {
           "position": 3,
@@ -79,7 +81,8 @@
           "option1": "Green",
           "fulfillment_service": "manual",
           "option2": null,
-          "option3": null
+          "option3": null,
+          "inventory_item_id": 1234567890
         },
         {
           "position": 4,
@@ -99,7 +102,8 @@
           "option1": "Black",
           "fulfillment_service": "manual",
           "option2": null,
-          "option3": null
+          "option3": null,
+          "inventory_item_id": 1234567890
         }
       ],
       "vendor": "Apple",
@@ -149,7 +153,8 @@
           "option1": "Pink",
           "fulfillment_service": "manual",
           "option2": null,
-          "option3": null
+          "option3": null,
+          "inventory_item_id": 1234567890
         },
         {
           "position": 2,
@@ -169,7 +174,8 @@
           "option1": "Red",
           "fulfillment_service": "manual",
           "option2": null,
-          "option3": null
+          "option3": null,
+          "inventory_item_id": 1234567890
         },
         {
           "position": 3,
@@ -189,7 +195,8 @@
           "option1": "Green",
           "fulfillment_service": "manual",
           "option2": null,
-          "option3": null
+          "option3": null,
+          "inventory_item_id": 1234567890
         },
         {
           "position": 4,
@@ -209,7 +216,8 @@
           "option1": "Black",
           "fulfillment_service": "manual",
           "option2": null,
-          "option3": null
+          "option3": null,
+          "inventory_item_id": 1234567890
         }
       ],
       "vendor": "Apple",
@@ -259,7 +267,8 @@
           "option1": "Pink",
           "fulfillment_service": "manual",
           "option2": null,
-          "option3": null
+          "option3": null,
+          "inventory_item_id": 1234567890
         },
         {
           "position": 2,
@@ -279,7 +288,8 @@
           "option1": "Red",
           "fulfillment_service": "manual",
           "option2": null,
-          "option3": null
+          "option3": null,
+          "inventory_item_id": 1234567890
         },
         {
           "position": 3,
@@ -299,7 +309,8 @@
           "option1": "Green",
           "fulfillment_service": "manual",
           "option2": null,
-          "option3": null
+          "option3": null,
+          "inventory_item_id": 1234567890
         },
         {
           "position": 4,
@@ -319,7 +330,8 @@
           "option1": "Black",
           "fulfillment_service": "manual",
           "option2": null,
-          "option3": null
+          "option3": null,
+          "inventory_item_id": 1234567890
         }
       ],
       "vendor": "Apple",
@@ -369,7 +381,8 @@
           "option1": "Pink",
           "fulfillment_service": "manual",
           "option2": null,
-          "option3": null
+          "option3": null,
+          "inventory_item_id": 1234567890
         },
         {
           "position": 2,
@@ -389,7 +402,8 @@
           "option1": "Red",
           "fulfillment_service": "manual",
           "option2": null,
-          "option3": null
+          "option3": null,
+          "inventory_item_id": 1234567890
         },
         {
           "position": 3,
@@ -409,7 +423,8 @@
           "option1": "Green",
           "fulfillment_service": "manual",
           "option2": null,
-          "option3": null
+          "option3": null,
+          "inventory_item_id": 1234567890
         },
         {
           "position": 4,
@@ -429,7 +444,8 @@
           "option1": "Black",
           "fulfillment_service": "manual",
           "option2": null,
-          "option3": null
+          "option3": null,
+          "inventory_item_id": 1234567890
         }
       ],
       "vendor": "Apple",
