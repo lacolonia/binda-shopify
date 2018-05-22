@@ -16,10 +16,10 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  s.add_dependency "rails",                          "~> 5.1.5"
+  s.add_dependency "rails",                          "~> 5.1"
   s.add_dependency "binda",                          "~> 0.1.9"
-  s.add_dependency "shopify_api",                    "~> 4.3.0"
-  s.add_dependency "deface",                         "~> 1.3.0"
+  s.add_dependency "shopify_api",                    "~> 4.11"
+  s.add_dependency "deface",                         "~> 1.3"
 
   s.add_development_dependency "pg",                 "~> 1.0"
   s.add_development_dependency 'rspec-rails',        ">= 3.5",  "< 3.8"

@@ -3,9 +3,9 @@ PATH
   specs:
     binda-shopify (0.1.1)
       binda (~> 0.1.9)
-      deface (~> 1.3.0)
-      rails (~> 5.1.5)
-      shopify_api (~> 4.3.0)
+      deface (~> 1.3)
+      rails (~> 5.1)
+      shopify_api (~> 4.11)
 
 GEM
   remote: https://rubygems.org/
@@ -225,7 +225,7 @@ GEM
       fakeweb (>= 1.3.0)
       rake (>= 0.8.7)
       rspec (>= 2.6.0)
-    shopify_api (4.3.9)
+    shopify_api (4.11.0)
       activeresource (>= 3.0.0)
       rack
     simple_form (3.5.1)
