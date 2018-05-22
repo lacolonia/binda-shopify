@@ -16,14 +16,15 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  s.add_dependency "rails", "~> 5.1.5"
-  s.add_dependency "binda", "~> 0.1"
-  s.add_dependency 'shopify_api'
-  s.add_dependency 'pg'
-  s.add_dependency 'deface'
-  s.add_development_dependency 'rspec-rails'
-  s.add_development_dependency 'pry-rails'
-  s.add_development_dependency 'byebug'
-  s.add_development_dependency 'shopify-mock'
-  s.add_development_dependency 'database_cleaner'
+  s.add_dependency "rails",                          "~> 5.1.5"
+  s.add_dependency "binda",                          "~> 0.1.9"
+  s.add_dependency "shopify_api",                    "~> 4.3.0"
+  s.add_dependency "deface",                         "~> 1.3.0"
+
+  s.add_development_dependency "pg",                 "~> 1.0"
+  s.add_development_dependency 'rspec-rails',        ">= 3.5",  "< 3.8"
+  s.add_development_dependency 'byebug',             "~> 10.0"
+  s.add_development_dependency "factory_bot_rails",  "~> 4.8"
+  s.add_development_dependency 'database_cleaner',   ">= 1.6",  "< 2"
+  s.add_development_dependency "shopify-mock",       "~> 0.1.2"
 end
