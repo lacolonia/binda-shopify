@@ -32,10 +32,18 @@ Then, run:
 bundle install
 ```
 
-After that, you need to setup your connection to Shopify and create `Binda::Structures` where your data will be imported.
+After that, you need to setup your connection to Shopify and create `Binda::Structures` where your data will be imported. To do so you can run the following command.
+
+(development mode)
 
 ```bash
-bundle exec rails generate binda:shopify:install
+rails generate binda:shopify:install
 ```
 
-Now you are good to go!
+(production mode)
+
+```bash
+RAILS_ENV=production bundle exec rails generate binda:shopify:install
+```
+
+Once you complete the installation process you are good to go! Log into your admin panel and click the sync button.
