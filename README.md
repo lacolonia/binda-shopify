@@ -6,9 +6,19 @@ Extension that lets you import your Shopify products into your Binda application
 [![Maintainability](https://api.codeclimate.com/v1/badges/00f7b3a4bb33ea7637c2/maintainability)](https://codeclimate.com/github/lacolonia/binda-shopify/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/00f7b3a4bb33ea7637c2/test_coverage)](https://codeclimate.com/github/lacolonia/binda-shopify/test_coverage)
 
-# Installation
 
-Install Binda via terminal
+## Requirements
+
+Before you install **Binda Shopify** you need to setup your Shopify account properly. Please follow the steps below.
+
+### Create a private app
+
+Binda Shopify relies on private apps. A detailed guide on what are and how to create them can be found in the [Shopify official documentation](https://help.shopify.com/manual/apps/private-apps).
+
+## Installation
+
+If you haven't read the **Requirements** section do it now before continuing.
+Install Binda via terminal. See [Binda installation guide](https://www.rubydoc.info/gems/binda#Installation) for more information.
 
 Just add the gem to your application's Gemfile:
 
