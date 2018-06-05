@@ -10,7 +10,7 @@ module Binda
 
       def create_shopify_settings
         puts "1) Setting up Shopify Connection"
-        @installer = Installer.new
+        @installer = Binda::Shopify::Installer.new
         @settings = {}
         Binda::Shopify::CONNECTION_KEYS.each do |field_name|
           STDOUT.puts "What is your Shopify #{field_name.to_s.titleize}?"
