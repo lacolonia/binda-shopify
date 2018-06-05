@@ -4,7 +4,7 @@ module Binda
   module Shopify
     # Shopify Importer
     #
-    # This class is responsible for fetchingdata from
+    # This class is responsible for fetching data from a Shopify account
     class Importer
       attr_accessor :client, :settings
 
