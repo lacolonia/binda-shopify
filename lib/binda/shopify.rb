@@ -1,11 +1,16 @@
+# Main classes
 require 'binda'
-require 'binda/shopify/collection'
 require "binda/shopify/engine"
+
+# Secondary classes
+require 'binda/shopify/collection'
 require 'binda/shopify/importer'
 require 'binda/shopify/installer'
 require 'binda/shopify/item'
 require 'binda/shopify/product'
 require 'binda/shopify/product_type'
+
+# Vendor
 require 'deface'
 
 module Binda
