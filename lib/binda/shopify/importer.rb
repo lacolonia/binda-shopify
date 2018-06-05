@@ -48,20 +48,20 @@ module Binda
           component.publish_state = 'published'
           component.updated_at = Time.now
           component.save
-          create_fields(structure_fields, structure, component)
+          create_fields(structure_fields, structure, component, item)
         end
       end
 
-      def create_fields(structure_fields, structure, component)
+      def create_fields(structure_fields, structure, component, item)
         structure_fields.each do |field_group_slug, fields|
           field_group_slug = "#{structure.slug}-#{field_group_slug}"
           field_group = structure.field_groups.find_by(slug: field_group_slug)
           next unless field_group
-          create_field(field_group, fields, component)
+          create_field(field_group, fields, component, item)
         end
       end
 
-      def create_field(field_group, fields, component)
+      def create_field(field_group, fields, component, item)
         fields.each do |field_slug_and_type, method|
           field_slug, type = field_slug_and_type.split(':')
           type ||= 'string'
