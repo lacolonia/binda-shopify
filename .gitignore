@@ -27,3 +27,4 @@ spec/dummy/tmp/
 spec/dummy/.sass-cache	
 Gemfile.lock
 binda-shopify*.gem
+.idea
