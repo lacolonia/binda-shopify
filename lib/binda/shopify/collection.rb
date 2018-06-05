@@ -1,3 +1,4 @@
+require 'binda/shopify/item'
 module Binda
   module Shopify
     class Collection < Item
