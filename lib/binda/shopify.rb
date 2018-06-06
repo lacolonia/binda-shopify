@@ -15,7 +15,7 @@ require 'byebug'
 
 module Binda
   module Shopify
-    CONNECTION_KEYS = %i(api_key password shared_secret shop_name)
+    CONNECTION_KEYS = %i(api_key password shared_secret shop_name).freeze
     STRUCTURES = {
       product: {
         'shopify-details' => {
@@ -36,6 +36,6 @@ module Binda
           'handle' => 'name'
         }
       }
-    }
+    }.freeze
   end
 end
