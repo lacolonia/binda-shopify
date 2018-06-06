@@ -1,7 +1,7 @@
-<% unless Binda::Structure.where(slug: "shopify-settings").any? %>
+<% if Binda::Structure.where(slug: "shopify-settings").any? %>
   <li>
     <a class="synch-with-shopify" data-message="<%= I18n.t('binda.shopify.loading') %>" data-success="<%= I18n.t('binda.shopify.success') %>" href="<%= shopify_import_path %>">
       <i class="fas fa-sync"></i> <%= I18n.t('binda.shopify.synch_with_shopify') %>
     </a>
   </li>
-<% end %>>
+<% end %>
