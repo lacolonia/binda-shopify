@@ -34,16 +34,24 @@ bundle install
 
 After that, you need to setup your connection to Shopify and create `Binda::Structures` where your data will be imported. To do so you can run the following command.
 
-(development mode)
+_Development env_
 
 ```bash
 rails generate binda:shopify:install
 ```
 
-(production mode)
+_Production env_
 
 ```bash
 RAILS_ENV=production bundle exec rails generate binda:shopify:install
 ```
+
+> #### NOTE
+> 
+> Your Shopify **shop name**, which is required during the installation process, corresponds to the subdomain portion of you shopify store. 
+> 
+> For example: for `https://cool-shoes.myshopify.com` the Shopify **shop name** is `cool-shoes`.
+> 
+> Don't confuse it with the private app name.
 
 Once you complete the installation process you are good to go! Log into your admin panel and click the sync button.
