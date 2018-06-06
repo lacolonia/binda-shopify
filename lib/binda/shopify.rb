@@ -11,6 +11,7 @@ require 'binda/shopify/product_type'
 
 # Vendor
 require 'deface'
+require 'byebug'
 
 module Binda
   module Shopify
