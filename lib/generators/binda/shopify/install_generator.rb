@@ -1,3 +1,5 @@
+require 'binda/shopify/installer'
+
 module Binda
   module Shopify
     class InstallGenerator < Rails::Generators::Base
