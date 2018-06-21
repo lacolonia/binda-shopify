@@ -11,7 +11,7 @@ require 'binda/shopify/product_type'
 
 # Vendor
 require 'deface'
-require 'byebug'
+require 'byebug' unless Rails.env.production?
 
 module Binda
   module Shopify
